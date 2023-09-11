@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import Product  # Import the Product model from your app
+from .models import Item
 
-admin.site.register(Product) 
+admin.site.register(Item)

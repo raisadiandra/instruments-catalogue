@@ -1,5 +1,17 @@
 <h1>Instruments Catalogue</h1>
 
+<style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+}
+</style>
+
 <h5>Name: </h5>
 <p>{{ name }}<p>
 <h5>Class: </h5>
@@ -13,9 +25,9 @@
         <th>Price</th>
     </tr>
     <tr>
-        <td>{{ product.name }}</td>
-        <td>{{ product.description }}</td>
-        <td>{{ product.amount }}</td>
-        <td>Rp{{ product.price }},00</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.description }}</td>
+        <td>{{ item.amount }}</td>
+        <td>Rp{{ item.price }},00</td>
     </tr>
 </table>
