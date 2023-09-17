@@ -1,19 +1,46 @@
 from django.shortcuts import render
 from .models import Item
+from django.http import HttpResponseRedirect
+from main.forms import ItemForm
+from django.urls import reverse
+from django.http import HttpResponse
+from django.core import serializers
 
 def show_main(request):
-    item = Item(
-        name='Piano',
-        amount=10,
-        description='The piano is a keyboard instrument that produces sound when pressed on the keys.',
-        price=10000000)
-    
-    item.save()
+    items = Item.objects.all()
+    item_count = items.count()
 
     context = {
         'name': 'Raisa Diandra Survijanto',
         'class': 'PBP E',
-        'item': item,
+        'items': items,
+        'item_count' : item_count,
     }
 
     return render(request, "main.html", context)
+
+def create_item(request):
+    form = ItemForm(request.POST or None)
+
+    if form.is_valid() and request.method == "POST":
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {'form': form}
+    return render(request, "create_item.html", context)
+
+def show_xml(request):
+    data = Item.objects.all()
+    return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+
+def show_json(request):
+    data = Item.objects.all()
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+def show_xml_by_id(request, id):
+    data = Item.objects.filter(pk=id)
+    return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+
+def show_json_by_id(request, id):
+    data = Item.objects.filter(pk=id)
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")

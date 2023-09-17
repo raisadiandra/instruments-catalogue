@@ -1,12 +1,19 @@
 Nama: Raisa Diandra Survijanto
 NPM: 2206814545
 Kelas: PBP E
+Link adaptable: https://instrumentscatalogue.adaptable.app/main/
+
+
+
+DAFTAR ISI:
+- Jawaban Tugas 2 (line 16)
+- Jawaban Tugas 3 (line 94)
+
+
 
 
 
 JAWABAN TUGAS 2
-
-Link adaptable: https://instrumentscatalogue.adaptable.app/main/
 
 
 
@@ -76,6 +83,88 @@ Link adaptable: https://instrumentscatalogue.adaptable.app/main/
 
 
 
-Referensi:
+Referensi Tugas 2:
 Lalani, S. (2022, May 9). MVC vs MVP vs MVVM - Top 10 Differences You Should Know. Xperti. https://xperti.io/blogs/mvc-vs-mvp-vs-mvvm/
 tereško. (2012, August 9). What are the differences between MVC, MVP and MVVM? Stack Overflow. https://stackoverflow.com/questions/11877575/what-are-the-differences-between-mvc-mvp-and-mvvm 
+
+
+
+
+
+JAWABAN TUGAS 3
+
+
+
+1. Apa perbedaan antara form POST dan form GET dalam Django?
+
+    Berikut adalah perbedaan dari form POST dan form GET:
+
+    - Form POST harus digunakan apabila terdapat perubahan yang berdampak pada keadaan suatu sistem. Form GET digunakan untuk perubahan-perubahan kecil yang tidak mengubah keadaan suatu sistem.
+
+    - Form POST lebih aman berkaitan dengan keamanannya karena data tidak terlihat pada URL. Sementara itu, data pada form GET terlihat pada URL. Maka dari itu, penggunaan password biasanya menggunakan POST.
+
+    - Form POST tidak memiliki batasan panjang data, sementara form GET ada. Maka dari itu, penggunaan form GET harus untuk data yang pendek. Apabila ada data yang panjang, lebih cocok menggunakan form POST.
+
+
+
+2. Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?
+
+    Berikut adalah perbedaan utama antara XML, JSON, dan HTML:
+
+    - HTML digunakan untuk mendesain tampilan suatu website dan menggunakan hyperlinks. Sebagai sarana untuk menampilkan media seperti gambar dan tulisan pada website. HTML bukan digunakan untuk menyimpan data.
+
+    - XML digunakan untuk menyimpan data dan diperuntukkan agar bersifat self-descriptive. Namun, orang awam dapat merasa kesulitan dalam mengerti XML. XML lebih aman dibandingkan JSON. XML menyediakan fitur untuk comment.
+
+    - JSON juga digunakan untuk menyimpan data, tetapi lebih mudah dimengerti oleh orang awam dibandingkan XML. Namun, dibandingkan XML, JSON lebih tidak aman. JSON juga tidak menyediakan fitur comment.
+
+
+
+3. Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?
+
+    JSON sering digunakan dalam pertukaran data antara aplikasi web modern dengan alasan utama bahwa JSON mudah dimengerti oleh orang awam. Selain itu, JSON juga menggunakan bahasa pemrograman JavaScript yang kompatibel dengan aplikasi lain yang juga menggunakan JavaScript. JSON juga menyediakan array (sementara XML tidak) sehingga membantu dalam pemrograman yang membutuhkan array.
+
+
+
+4. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+
+    Sebelum memulai mengimplementasikan checklist, saya mengganti URL program ini dari menggunakan main/ menjadi tidak menggunakan apa-apa sehingga dapat dilihat pada URL program secara langsung. Kemudian, saya membuat file baru base.html pada folder templates di direktori utama yang berfungsi sebagai kerangka untuk halaman web lain pada proyek. Saya menambahkan templates pada kode di settings.py di direktori proyek agar bisa digunakan pada proyek.
+
+    Berikut adalah cara saya mengimplementasikan tiap langkah dari checklist yang disediakan:
+
+    - Membuat input form untuk menambahkan objek model pada app sebelumnya.
+        Pertama saya membuat file forms.py di direktori aplikasi yang berisi apa saja yang saya inginkan ada pada input form. Kemudian saya melakukan import pada views.py di direktori aplikasi agar input form dapat berjalan. Pada file tersebut, saya menambahkan fungsi create_item agar dapat menambahkan hasil input secara otomatis ketika input di-submit. Saya juga mengubah kode di fungsi show_main agar data bisa diambil langsung dari database, lalu di-render.
+        Selanjutnya saya ke urls.py pada direktori aplikasi dan menambahkan fungsi create_item ke import agar bisa digunakan. Saya juga menambahkan path URL untuk create_item. Setelah itu, saya membuat file baru bernama create_item.html di dalam folder templates di direktori aplikasi, yang berfungsi untuk menampilkan tabel untuk input yang telah di-submit. Saya juga menambahkan tabel di main.html yang menunjukkan setiap kategori input tersebut. Apabila website dibuka, kita dapat melakukan input nama barang, deskripsi, jumlah, dan harga, kemudian melakukan submit dan akan ditampilkan pada tabel.
+    
+    - Tambahkan 5 fungsi views untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID.
+        Fungsi untuk melihat objek dalam format HTML sudah dilakukan di atas.
+        Fungsi untuk melihat objek dalam format XML, JSON, XML by ID, dan JSON by ID kurang lebih sama semua. Pertama, pada file views.py di direktori aplikasi, ditambahkan beberapa impor. Selanjutnya, masing-masing membuat fungsi baru, yaitu: show_xml, show_json, show_xml_by_id, dan show_json_by_id. Kemudian, ada variabel data yang menyimpan hasil query seluruh data pada Items. Terakhir, yang akan di-return adalah HttpResponse berisi hasil query yang telah diterjemahkan menjadi format XML/JSON menggunakan serializers.
+        Perbedaan antara show_xml dan show_xml_by_id serta show_json dan show_json_by_id adalah untuk yang tanpa ID, mereka akan menampilkan seluruh data yang ada. Namun, yang dengan ID akan menampilkan sesuai dengan ID setiap data (urutan setiap data dikumpulkan).
+    
+    - Membuat routing URL untuk masing-masing views yang telah ditambahkan.
+        Hal yang harus dilakukan adalah masuk ke file urls.py pada direktori aplikasi dan menambahkan semua fungsi yang telah dibuat di import. Kemudian, bisa ditambahkan pada urlpatterns path yang hendak digunakan untuk menuju tiap fungsi.
+
+    - Menambahkan pesan "Kamu menyimpan X item pada aplikasi ini" (dengan X adalah jumlah data item yang tersimpan pada aplikasi) dan menampilkannya di atas tabel data.
+        Untuk melakukan hal ini, saya menambahkan variabel baru pada views.py di direktori aplikasi yaitu item_count yang akan berisi jumlah items yang ada (input yang telah dilakukan). Setelah itu, akan di-render. Pada file main.html, saya menambahkan satu line untuk menampilkan jumlah tersebut menggunakan <p> </p> dan menambahkan variabel item_count. 
+
+
+
+5. Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md.
+
+    Berikut adalah screenshot dari setiap hasil akses URL pada Postman:
+
+    ![html](html.png)
+
+    ![xml](xml.png)
+
+    ![json](json.png)
+
+    ![xml1](xml1.png)
+
+    ![json3](json3.png)
+
+
+
+Referensi Tugas 3:
+Django. (2023). Form Method Get and Post Difference. Argile.org. https://argile.org/form-method-get-and-post-difference
+Sambhav. (2021, February 6). Difference Between HTML, XML and DHTML. GeeksforGeeks. https://www.geeksforgeeks.org/difference-between-html-xml-and-dhtml/
+Vivekkothari. (2018, July 19). Difference between JSON and XML. GeeksforGeeks. https://www.geeksforgeeks.org/difference-between-json-and-xml/

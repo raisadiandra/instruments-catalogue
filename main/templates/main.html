@@ -1,3 +1,6 @@
+{% extends 'base.html' %}
+
+{% block content %}
 <h1>Instruments Catalogue</h1>
 
 <style>
@@ -17,17 +20,32 @@ th, td {
 <h5>Class: </h5>
 <p>{{ class }}<p>
 
+<p><center>Current number of items: {{ item_count }}</center></p>
+
 <table>
     <tr>
         <th>Name</th>
         <th>Description</th>
-        <th> Amount </th>
+        <th>Amount</th>
         <th>Price</th>
     </tr>
-    <tr>
-        <td>{{ item.name }}</td>
-        <td>{{ item.description }}</td>
-        <td>{{ item.amount }}</td>
-        <td>Rp{{ item.price }},00</td>
-    </tr>
+
+    {% for item in items %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.description }}</td>
+            <td>{{ item.amount }}</td>
+            <td>Rp{{ item.price }},00</td>
+        </tr>
+    {% endfor %}
 </table>
+
+<br />
+
+<a href="{% url 'main:create_item' %}">
+    <button>
+        Add New Product
+    </button>
+</a>
+
+{% endblock content %}
