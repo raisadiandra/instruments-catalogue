@@ -7,7 +7,8 @@ Link adaptable: https://instrumentscatalogue.adaptable.app/main/
 
 DAFTAR ISI:
 - Jawaban Tugas 2 (line 16)
-- Jawaban Tugas 3 (line 94)
+- Jawaban Tugas 3 (line 95)
+- Jawaban Tugas 4 (line 177)
 
 
 
@@ -168,3 +169,61 @@ Referensi Tugas 3:
 Django. (2023). Form Method Get and Post Difference. Argile.org. https://argile.org/form-method-get-and-post-difference
 Sambhav. (2021, February 6). Difference Between HTML, XML and DHTML. GeeksforGeeks. https://www.geeksforgeeks.org/difference-between-html-xml-and-dhtml/
 Vivekkothari. (2018, July 19). Difference between JSON and XML. GeeksforGeeks. https://www.geeksforgeeks.org/difference-between-json-and-xml/
+
+
+
+
+
+JAWABAN TUGAS 4
+
+
+
+1. Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?
+
+    Django UserCreationForm adalah suatu form yang dapat digunakan untuk melakukan register dalam Django. Pada UserCreationForm, terdapat tiga field standar yang harus diisi, yaitu username, password1 (untuk meminta password), dan password2 (untuk konfirmasi password). Form ini sudah bawaan dari Django.
+
+    Kelebihan dari penggunaan UserCreationForm adalah penerapannya yang cenderung simpel bagi seluruh pihak. User dapat mengerti template dengan mudah. Sementara itu, kekurangan dari penggunaan UserCreationForm adalah field yang ada sebagai default hanya ada tiga. Apabila hendak membuat field baru untuk yang lainnya seperti email, form harus dimodifikasi lebih lanjut.
+
+
+
+2. Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?
+
+    Autentikasi adalah proses untuk memverifikasi siapa yang hendak mengakses, biasa disebut sebagai login. Sementara itu, otorisasi adalah proses untuk memverifikasi apakah orang tersebut memiliki akses terhadap sesuatu. Keduanya penting karena dapat membantu website terhindar dari akses yang tidak disetujui, pencurian data, sampai penyalahgunaan sistem untuk tujuan yang tidak seharusnya.
+
+
+
+3. Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?
+
+    Cookies adalah data di sisi client yang disimpan mengenai informasi tentang siapa yang hendak mengakses, dan disimpan untuk melakukan login. Satu session dimulai ketika client login dan diakhiri ketika client logout. Session cookie disimpan di memori browser dan ketika browser ditutup, cookie tersebut akan terhapus. Tidak bisa digunakan untuk jangka panjang. Django menggunakan cookie agar respon yang dihasilkan oleh server sesuai dengan masing-masing user. Misalnya untuk item yang ditunjukkan, memang item yang dipilih user tersebut dan bukan item milik user lain.
+
+
+
+4. Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
+
+    Secara default, penggunaan cookies dianggap aman karena cookies bukan merupakan kode, melainkan hanya menyimpan data. Cookies juga tidak dapat membaca informasi dari komputer user, hanya dapat membaca data yang dimasukkan user. Namun, harus diwaspadai juga data yang dimasukkan dapat dicuri. Dapat juga dilakukan session forgery atau menggunakan session milik user lain.
+
+
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+
+    - Mengimplementasikan fungsi registrasi, login, dan logout untuk memungkinkan pengguna untuk mengakses aplikasi sebelumnya dengan lancar.
+        Pertama, saya menjalankan virtual environment. Kemudian, melakukan import di file views.py pada direktori aplikasi dan menambahkan fungsi bernama register untuk melakukan register menggunakan UserCreationForm. Jika form valid, data yang diisi di form disimpan. Setelah itu, saya membuat file baru bernama register.html untuk menampilkan web khusus untuk register. Saya kemudian ke urls.py dan menambahkan fungsi register di import. Terakhir, saya menghubungkan agar bisa diakses melalui URL yang diinginkan di urls.py di direktori yang sama.
+        Untuk membuat login dan logout, saya melakukan import untuk authenticate, login, dan logout di views.py di direktori aplikasi. Kemudian, saya membuat fungsi login_user untuk login yang akan masuk ke main apabila user ditemukan dan fungsi logout_user untuk logout untuk melakukan logout. Kemudian, saya membuat file login.html untuk menampilkan web khusus login. Setelah itu, saya ke urls.py di direktori aplikasi, melakukan import fungsi login_user dan logout_user yang telah dibuat, dan menghubungkan dengan URL yang diinginkan.
+        Saya melakukan restriksi terhadap halaman main agar yang dapat mengakses halaman main adalah orang yang telah melakukan login. Ini dengan cara menambahkan import login_required pada views.py dan menambahkan sebelum masuk ke main agar hanya orang yang telah login yang bisa mengakses halaman main.
+    
+    - Menghubungkan model Item dengan User.
+        Pertama-tama saya masuk ke models.py di direktori aplikasi dan import User. Kemudian, saya menambahkan atribut baru yaitu user pada model Item dan menggunakan User. Atribut ini menggunakan ForeignKey agar satu item pasti dimiliki satu user. Kemudian, pada fungsi create_item di views.py agar item yang sedang dibuat bisa disimpan sesuai dengan user yang sedang login. Selain itu, saya mengganti context pada fungsi show_main agar nama yang ditampilkan sesuai dengan username yang sedang login. Kemudian saya melakukan migrasi model agar perubahan pada models.py disimpan.
+
+    - Membuat dua akun pengguna dengan masing-masing tiga dummy data menggunakan model yang telah dibuat pada aplikasi sebelumnya untuk setiap akun di lokal.
+        Saya melakukan ini setelah menghubungkan Item dan User agar tiap akun memiliki item yang berbeda. Saya membuat dua buah akun pengguna dengan username raisa1 dan raisa2 dengan cara memilih pilihan register. Untuk pengguna raisa1 datanya adalah data yang pada tugas sebelumnya saya masukkan, untuk pengguna raisa2 saya menambahkan data baru. Kedua username dapat digunakan untuk login dan akan menampilkan item masing-masing serta dapat menambahkan item baru.
+    
+    - Menampilkan detail informasi pengguna yang sedang logged in seperti username dan menerapkan cookies seperti last login pada halaman utama aplikasi.
+        Saya masuk ke views.py di direktori aplikasi dan menambahkan beberapa import termasuk datetime untuk mengambil waktu saat ini. Kemudian, saya mengubah kode di fungsi login_user agar dibuat cookie untuk menampilkan last login dengan variabel last_login. Setelah itu, last_login saya tambahkan di context agar bisa dipakai untuk di main.html. Saya juga menambahkan di main.html agar bisa ditunjukkan pada web. Selain itu, saya juga menambahkan kode di fungsi logout_user agar cookie dihapus ketika user melakukan logout.
+
+
+
+
+
+Referensi Tugas 4:
+Java T Point. (2023). Session vs. Cookies| Difference between Session and Cookies - javatpoint. Www.javatpoint.com. https://www.javatpoint.com/session-vs-cookies
+OverIQ. (2020, July 27). Django Creating Users using UserCreationForm. OverIQ.com. https://overiq.com/django-1-10/django-creating-users-using-usercreationform/
