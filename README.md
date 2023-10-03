@@ -6,9 +6,10 @@ Link adaptable: https://instrumentscatalogue.adaptable.app/main/
 
 
 DAFTAR ISI:
-- Jawaban Tugas 2 (line 16)
-- Jawaban Tugas 3 (line 95)
-- Jawaban Tugas 4 (line 177)
+- Jawaban Tugas 2 (line 18)
+- Jawaban Tugas 3 (line 96)
+- Jawaban Tugas 4 (line 178)
+- Jawaban Tugas 5 (Line 236)
 
 
 
@@ -227,3 +228,95 @@ JAWABAN TUGAS 4
 Referensi Tugas 4:
 Java T Point. (2023). Session vs. Cookies| Difference between Session and Cookies - javatpoint. Www.javatpoint.com. https://www.javatpoint.com/session-vs-cookies
 OverIQ. (2020, July 27). Django Creating Users using UserCreationForm. OverIQ.com. https://overiq.com/django-1-10/django-creating-users-using-usercreationform/
+
+
+
+
+
+JAWABAN TUGAS 5
+
+
+
+1. Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
+
+    Terdapat tiga selector dalam CSS, yaitu:
+
+    - Element selector: untuk mengubah properti dari semua elemen dengan suatu tag tertentu. Untuk mengaksesnya bisa langsung dengan namanya.
+
+    - ID selector: untuk mengubah properti dari suatu elemen dengan suatu ID spesifik. ID bersifat unik dalam satu halaman web. ID dapat dipasang pada tag-nya. Untuk mengaksesnya perlu menggunakan # pada depan namanya.
+
+    - Class selector: untuk mengubah properti dari semua elemen dengan class yang sama. Dengan itu, setiap bagian yang memiliki karakteristik yang sama dapat memiliki pengaturan yang sama. Untuk mengaksesnya perlu menggunakan . pada depan namanya.
+
+    Selain itu, ada juga combinator dalam CSS. Berikut adalah jenis-jenisnya:
+
+    - Descendant selector (contoh: div p): menyeleksi seluruh p yang keturunan dari div.
+
+    - Child selector (contoh: div > p): menyeleksi seluruh anak p dari div.
+
+    - Adjacent sibling selector (contoh: div + p): menyeleksi elemen pertama p setelah div (dengan syarat memiliki induk yang sama).
+
+    - General sibling selector (contoh: div ~ p): menyeleksi seluruh elemen p yang sejajar dengan div dan muncul setelah div.
+
+
+
+2. Jelaskan HTML5 Tag yang kamu ketahui.
+
+    Berikut adalah HTML5 tag yang saya ketahui:
+
+    - <header>: untuk menampilkan header/judul.
+    - <main>: untuk tempat konten utama yang harus ditampilkan.
+    - <nav>: untuk navigasi seperti menu.
+    - <div>: untuk mengelompokkan dan memisahkan antarbagian.
+    - <span>: untuk memberikan format tampilan tertentu.
+    - <button>: untuk membuat tombol baru.
+    - <ul>: untuk membuat daftar dari sesuatu.
+    - <li>: untuk menggambarkan daftar dari sesuatu.
+    - <a>: untuk mengarahkan pengguna ke suatu link.
+    - <form>: untuk meminta input tulisan dari pengguna.
+    - <br/>: untuk membuat baris baru.
+    - <table>: untuk membuat tabel baru.
+    - <thead>: untuk mengelompokkan bagian header pada tabel.
+    - <tr>: untuk membuat row baru pada tabel.
+    - <th>: untuk menulis sesuatu sebagai header pada tabel.
+    - <td>: untuk menulis sesuatu pada tabel.
+
+
+
+3.  Jelaskan perbedaan antara margin dan padding.
+
+    Berikut adalah perbedaan antara margin dan padding:
+
+    - Margin adalah area yang membungkus area halaman secara keseluruhan agar area di pinggiran kosong. Margin ada di luar border.
+
+    - Padding adalah area yang membungkus area konten agar area di pinggiran konten kosong. Padding ada di dalam border.
+
+    Margin dan padding dipisahkan oleh border.
+
+
+
+4. Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?
+
+    Berikut adalah perbedaan antara Tailwind dan Bootstrap:
+
+    - Tailwind membangun tampilan dengan cara menggabungkan kelas-kelas utilitas yang ada. File CSS pada Tailwind lebih sedikit. Tailwind juga lebih fleksibel dan mudah adaptasi sesuai proyek yang dilakukan. Tailwind cenderung lebih kompleks dan butuh pembelajaran lebih mendalam. Jika hendak kustomisasi yang lebih tinggi, dapat menggunakan Tailwind.
+
+    - Bootstrap memberikan tampilan yang sudah jadi dan tinggal digunakan langsung. File CSS pada Bootstrap lebih besar. Bootstrap juga cenderung kurang fleksibel apabila harus dilakukan perubahan, tetapi membuat tampilan menjadi lebih konsisten. Bootstrap lebih mudah dipelajari oleh pemula. Jika ingin tampilan yang lebih cepat dikerjakan, dapat menggunakan Bootstrap.
+
+
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step.
+
+    - Kustomisasi halaman login, register, dan tambah inventori semenarik mungkin.
+        Pertama, saya menambahkan Bootstrap CSS dan JS CSS pada file base.html agar bisa digunakan dalam program. Kemudian, saya menambahkan navigation bar pada halaman. Saya menambahkan judul aplikasi dengan navbar-brand (hanya sebagai heading jadi tidak ada link), menambahkan button agar bisa menggunakan button dan lebih melakukan kustomisasi pada halaman, menambahkan bagian home dengan nav-item pada navigation bar yang apabila ditekan akan ke halaman utama (halaman tersebut), menambahkan kelas dengan nav-item tetapi di-disabled agar tidak bisa ditekan atau diubah, menambahkan username pengguna dengan nav-item juga dan di-disabled serta diganti warnanya menjadi hitam dan alignment-nya menjadi ke kanan, serta menambahkan tombol untuk logout dengan form yang membantu pengguna untuk logout. Selain itu, saya mengubah warna background navigation bar-nya begitu juga dengan warna tombol, serta memperbaiki posisi judul di header dan tombol untuk menambahkan item agar alignment-nya menjadi di tengah.
+
+        Selanjutnya saya menambahkan fitur edit dan remove item yang sudah ada. Pertama, saya membuat fungsi create_item dan edit_item di views.py, kemudian membuat file create_item.html dan edit_item.html untuk mengatur tampilan. Setelah itu, saya masuk ke urls.py dan menambahkan impor kedua fungsi dari views.py dan menambahkan path URL agar dapat diakses. Terakhir, saya masuk ke main.html dan menambahkan dua buah button baru untuk masing-masing fungsi.
+    
+    - Kustomisasi halaman daftar inventori menjadi lebih berwarna maupun menggunakan approach lain seperti menggunakan Card.
+
+        Untuk daftar inventori, saya menggunakan tabel yang sudah ada dan menambahkan beberapa hal. Saya mengatur class agar dapat menggunakan Card, lalu mengatur agar tabel menjadi responsif dengan cara menggunakan class juga. Selain itu, saya memasukkan jumlah item ke dalam body dari Card tersebut agar muncul tepat di atas tabel. Saya juga tidak lupa membuat agar alignment tabel menjadi di tengah.
+
+
+
+Referensi Tugas 4:
+BBBootstrap. (2019). Bootstrap 4 Basic table with card Example. Bbbootstrap.com. https://bbbootstrap.com/snippets/basic-table-card-45601427
+Otto, M., & Thorntonn, J. (n.d.). Navbar. Getbootstrap.com. https://getbootstrap.com/docs/5.3/components/navbar/
