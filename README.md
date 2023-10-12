@@ -5,17 +5,18 @@ Link adaptable: https://instrumentscatalogue.adaptable.app/main/
 
 
 
-DAFTAR ISI:
-- Jawaban Tugas 2 (line 18)
-- Jawaban Tugas 3 (line 96)
-- Jawaban Tugas 4 (line 178)
-- Jawaban Tugas 5 (Line 236)
+# DAFTAR ISI
+- Jawaban Tugas 2 (line 19)
+- Jawaban Tugas 3 (line 97)
+- Jawaban Tugas 4 (line 179)
+- Jawaban Tugas 5 (Line 237)
+- Jawaban Tugas 6 (Line 329)
 
 
 
 
 
-JAWABAN TUGAS 2
+## JAWABAN TUGAS 2
 
 
 
@@ -93,7 +94,7 @@ tereško. (2012, August 9). What are the differences between MVC, MVP and MVVM? 
 
 
 
-JAWABAN TUGAS 3
+## JAWABAN TUGAS 3
 
 
 
@@ -175,7 +176,7 @@ Vivekkothari. (2018, July 19). Difference between JSON and XML. GeeksforGeeks. h
 
 
 
-JAWABAN TUGAS 4
+## JAWABAN TUGAS 4
 
 
 
@@ -233,7 +234,7 @@ OverIQ. (2020, July 27). Django Creating Users using UserCreationForm. OverIQ.co
 
 
 
-JAWABAN TUGAS 5
+## JAWABAN TUGAS 5
 
 
 
@@ -317,6 +318,73 @@ JAWABAN TUGAS 5
 
 
 
-Referensi Tugas 4:
+Referensi Tugas 5:
 BBBootstrap. (2019). Bootstrap 4 Basic table with card Example. Bbbootstrap.com. https://bbbootstrap.com/snippets/basic-table-card-45601427
 Otto, M., & Thorntonn, J. (n.d.). Navbar. Getbootstrap.com. https://getbootstrap.com/docs/5.3/components/navbar/
+
+
+
+
+
+## JAWABAN TUGAS 6
+
+
+
+1. Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.
+
+    Terdapat beberapa perbedaan antara keduanya. Perbedaan utama adalah apabila synchronous programming digunakan, apabila terdapat pembaruan suatu atau beberapa elemen data pada halaman, harus dilakukan refresh halaman secara keseluruhan untuk melihat perubahannya. Sementara itu, apabila menggunakan asynchronous programming, tidak perlu refresh halaman secara keseluruhan, perubahan akan langsung terlihat. Selain itu, operasi yang dilakukan pada synchronous programming tidak bisa berjalan dengan paralel (hanya bisa satu operasi berjalan), sementara pada asynchronous programming, banyak operasi dapat berjalan secara paralel.
+
+
+
+2. Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.
+
+    Event-driven programming artinya apabila terjadi suatu event, kode yang ada dalam bagian tersebut baru akan dijalankan. Apabila event tersebut tidak terjadi, kode tidak dijalankan. Event sendiri dapat berupa ketika suatu elemen HTML ditekan, ketika mouse sedang ada di atas suatu elemen HTML, ketika key pada keyboard ditekan, dan lain-lain. Dalam tugas ini, penerapan event-driven programming ada pada AJAX yang apabila pengguna sudah selesai menulis informasi untuk menambah add barang, ada button_add. Ketika button itu ditekan, akan masuk ke function addItem().
+
+
+
+3. Jelaskan penerapan asynchronous programming pada AJAX.
+
+    Asynchronous programming menggunakan async, await, dan Fetch API. Pertama, buat block <Script></Script>. Seluruh fungsi yang dibuat harus ada dalam block tersebut. Untuk membuat program asynchronous, dapat menggunakan async di depan nama fungsi. Dalam fungsi async, dapat menggunakan fetch() API untuk mengambil data dari JSON secara asynchronous. Setelah dilakukan fetch, dapat menggunakan then() agar data dari JSON dapat diubah menjadi JavaScript. Untuk await digunakan untuk menunggu apabila async sudah selesai.
+
+
+
+4. Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.
+
+    Perbedaan antara Fetch API dan library jQuery adalah library jQuery merupakan library eksternal, sementara fetch merupakan metode bawaan dari JavaScript sehingga tidak membutuhkan library eksternal tambahan. Metode fetch cenderung lebih ringan dan modern, sementara jQuery lebih lengkap fiturnya tetapi lebih berat. Kedua teknologi memiliki kelebihan masing-masing, tetapi untuk proyek yang cenderung sederhana lebih baik menggunakan fetch, sementara untuk proyek yang membutuhkan fitur-fitur lain lebih baik menggunakan jQuery.
+
+
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step.
+
+    - Buatlah fungsi view baru untuk menambahkan item baru ke dalam basis data. (AJAX POST)
+
+        Pertama membuat fungsi get_item_json di views.py untuk mendapatkan items dalam bentuk JSON agar bisa di-fetch. Selanjutnya membuat fungsi create_ajax setelah melakukan impor, kemudian mengambil seluruh value yang ada (name, amount, price, description) dan memasukkannya ke variabel, membuat Item value dengan seluruh data tersebut, dan melakukan return.
+    
+    - Hubungkan form yang telah kamu buat di dalam modal kamu ke path /create-ajax/. (AJAX POST)
+
+        Dilakukan routing untuk fungsi get_item_json dan create_ajax di urls.py dengan cara memasukkan keduanya ke dalam path URL. Untuk get_item_json dengan path /get-item/, sementara untuk create_ajax dengan path /create-ajax/.
+
+    - Buatlah sebuah tombol yang membuka sebuah modal dengan form untuk menambahkan item. (AJAX POST)
+    
+        Masuk ke main.html. Untuk membuat button-nya, pertama dilakukan pengaturan untuk modal yang akan muncul menggunakan Bootstrap dan menyesuaikan input dengan variabel yang diminta. Terakhir, dibuat button di bawah add product yang biasa (tidak menggunakan AJAX) yang apabila ditekan akan masuk ke modal.
+    
+    - Lakukan refresh pada halaman utama secara asinkronus untuk menampilkan daftar item terbaru tanpa reload halaman utama secara keseluruhan. (AJAX POST)
+
+        Pertama dibuat <Scripts></Scripts> untuk menulis AJAX di dalamnya. Setelah itu membuat fungsi getItems() untuk mengambil data dari JSON dan refreshItems() untuk menampilkan tabel. Keduanya didahului dengan async untuk menandakan bahwa kedua fungsi tersebut asynchronous sehingga ketika selesai melakukan add item, akan langsung muncul pada tabel.
+
+    - Lakukan pengambilan task menggunakan AJAX GET. (AJAX GET)
+
+        Selain kedua fungsi yang telah dibuat, satu fungsi lagi yang dibuat adalah addItem() untuk menambahkan item ke dalam database. Dalam getItems() dan addItem(), digunakan fetch() untuk mengambil data. Pada getItems(), digunakan fetch untuk mengambil data dari fungsi get_item_json, kemudian data diubah dari JSON menjadi JavaScript. Sementara itu, pada addItem(), digunakan fetch untuk mengambil data dari fungsi create_ajax.
+    
+    - Ubahlah kode cards data item agar dapat mendukung AJAX GET. (AJAX GET)
+
+        Dari kode yang sebelumnya, saya memberikan id pada table yang telah dibuat yaitu item_table. Namun, isi tabel saya pindahkan ke dalam kode refeshItems(). Digunakan variabel htmlString untuk String awal dengan berisi header dari table yang sebelumnya, kemudian htmlString akan ditambah dengan setiap kategori dari setiap item yang ditemukan pada hasil fetch. Terakhir, apabila sudah selesai, isi dari tabel diperbarui dengan htmlString yang baru.
+    
+    - Melakukan perintah collectstatic.
+
+        Untuk melakukan perintah collectstatic, saya melakukan import dan menambahkan variabel STATIC_ROOT pada settings.py. Setelah itu, saya menjalankan perintah python manage.py collectstatic untuk melakukan collectstatic. Sekarang seluruh static sudah terkumpul menjadi satu.
+
+
+
+Referensi Tugas 6:
+BuildFire. (2023, March 7). Synchronous vs. Asynchronous Programming: What’s the Difference? BuildFire. https://buildfire.com/synchronous-vs-asynchronous-programming/
