@@ -30,6 +30,7 @@ def show_main(request):
 
     return render(request, "main.html", context)
 
+@csrf_exempt
 def create_item(request):
     form = ItemForm(request.POST or None)
 
@@ -87,12 +88,14 @@ def login_user(request):
     context = {}
     return render(request, 'login.html', context)
 
+@csrf_exempt
 def logout_user(request):
     logout(request)
     response = HttpResponseRedirect(reverse('main:login'))
     response.delete_cookie('last_login')
     return response
 
+@csrf_exempt
 def edit_item(request, id):
     item = Item.objects.get(pk = id)
 
@@ -105,6 +108,7 @@ def edit_item(request, id):
     context = {'form': form}
     return render(request, "edit_item.html", context)
 
+@csrf_exempt
 def delete_item(request, id):
     item = Item.objects.get(pk = id)
     item.delete()
